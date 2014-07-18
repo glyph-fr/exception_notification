@@ -21,7 +21,7 @@ module ExceptionNotifier
     end
 
     def call(exception, options={})
-      message = "```#{exception.message}```"
+      message = "```#{ exception.message }\n#{ exception.backtrace.take(30).join("\n") }```"
       @notifier.ping message if valid?
     end
 
